@@ -14,9 +14,9 @@ describe('Paginate', () => {
   describe('Simple Cases', () => {
     it('success', () => {
       const vm = initComponent()
-      expect(vm.$el.querySelector("li:first-child a").textContent).to.equal("Prev")
-      expect(vm.$el.querySelector("li:last-child a").textContent).to.equal("Next")
-      expect(vm.$el.querySelector(".active a").textContent).to.equal("1")
+      expect(vm.$el.querySelector("li:first-child a").textContent).toBe("Prev")
+      expect(vm.$el.querySelector("li:last-child a").textContent).toBe("Next")
+      expect(vm.$el.querySelector(".active a").textContent).toBe("1")
     })
 
     it('next and prev button event right', () => {
@@ -25,13 +25,13 @@ describe('Paginate', () => {
       nextButton.click()
 
       Vue.nextTick(() => {
-        expect(vm.$el.querySelector(".active a").textContent).to.equal("2")
+        expect(vm.$el.querySelector(".active a").textContent).toBe("2")
 
         const prevButton = vm.$el.querySelector("li:first-child a")
         prevButton.click()
 
         Vue.nextTick(() => {
-          expect(vm.$el.querySelector(".active a").textContent).to.equal("1")
+          expect(vm.$el.querySelector(".active a").textContent).toBe("1")
         })
       })
     })
@@ -42,7 +42,7 @@ describe('Paginate', () => {
       prevButton.click()
 
       Vue.nextTick(() => {
-        expect(vm.$el.querySelector(".active a").textContent).to.equal("1")
+        expect(vm.$el.querySelector(".active a").textContent).toBe("1")
       })
     })
 
@@ -51,7 +51,7 @@ describe('Paginate', () => {
       const pageItem = vm.$el.querySelector('li:nth-child(3) a')
       pageItem.click()
       Vue.nextTick(() => {
-        expect(vm.$el.querySelector(".active a").textContent).to.equal("2")
+        expect(vm.$el.querySelector(".active a").textContent).toBe("2")
       })
     })
 
@@ -62,7 +62,7 @@ describe('Paginate', () => {
           value: 2
         }
       }).$mount()
-      expect(vm.$el.querySelector(".active a").textContent).to.equal("2")
+      expect(vm.$el.querySelector(".active a").textContent).toBe("2")
     })
 
     it('set forcePage success', () => {
@@ -77,13 +77,13 @@ describe('Paginate', () => {
       const nextButton = vm.$el.querySelector("li:last-child a")
       nextButton.click()
       Vue.nextTick(() => {
-        expect(vm.$el.querySelector(".active a").textContent).to.equal("6")
+        expect(vm.$el.querySelector(".active a").textContent).toBe("6")
 
         const prevButton = vm.$el.querySelector("li:first-child a")
         prevButton.click()
 
         Vue.nextTick(() => {
-          expect(vm.$el.querySelector(".active a").textContent).to.equal("6")
+          expect(vm.$el.querySelector(".active a").textContent).toBe("6")
         })
       })
     })
@@ -97,11 +97,11 @@ describe('Paginate', () => {
         }
       }).$mount()
 
-      expect(vm.$el.querySelector(".active a").textContent).to.equal("6")
+      expect(vm.$el.querySelector(".active a").textContent).toBe("6")
       const nextButton = vm.$el.querySelector("li:last-child a")
       nextButton.click()
       Vue.nextTick(() => {
-        expect(vm.$el.querySelector(".active a").textContent).to.equal("6")
+        expect(vm.$el.querySelector(".active a").textContent).toBe("6")
       })
     })
   })
@@ -114,7 +114,7 @@ describe('Paginate', () => {
           pageRange: 5
         }
       }).$mount()
-      expect(vm.$el.querySelectorAll("li a").length).to.equal(7)
+      expect(vm.$el.querySelectorAll("li a").length).toBe(7)
     })
 
     it('only has breakView in left', () => {
@@ -125,9 +125,9 @@ describe('Paginate', () => {
           breakViewClass: 'break-view'
         }
       }).$mount()
-      expect(vm.$el.querySelectorAll(`li:nth-child(3).break-view`).length).to.equal(1)
-      expect(vm.$el.querySelector(`li:nth-child(3) a`).textContent).to.equal('…')
-      expect(vm.$el.querySelector(`li:nth-child(4) a`).textContent).to.equal('8')
+      expect(vm.$el.querySelectorAll(`li:nth-child(3).break-view`).length).toBe(1)
+      expect(vm.$el.querySelector(`li:nth-child(3) a`).textContent).toBe('…')
+      expect(vm.$el.querySelector(`li:nth-child(4) a`).textContent).toBe('8')
     })
 
     it('page range is correct when current page is 0', () => {
@@ -142,7 +142,7 @@ describe('Paginate', () => {
           disabledClass: 'ignore'
         }
       }).$mount()
-      expect(vm.$el.querySelectorAll("li:not(.ignore) a").length).to.equal(5)
+      expect(vm.$el.querySelectorAll("li:not(.ignore) a").length).toBe(5)
     })
 
     it('page range is correct when current page is middle page', () => {
@@ -157,7 +157,7 @@ describe('Paginate', () => {
           disabledClass: 'ignore'
         }
       }).$mount()
-      expect(vm.$el.querySelectorAll("li:not(.ignore) a").length).to.equal(5)
+      expect(vm.$el.querySelectorAll("li:not(.ignore) a").length).toBe(5)
     })
 
     it('page range is correct when current page is last page', () => {
@@ -172,7 +172,7 @@ describe('Paginate', () => {
           disabledClass: 'ignore'
         }
       }).$mount()
-      expect(vm.$el.querySelectorAll("li:not(.ignore) a").length).to.equal(5)
+      expect(vm.$el.querySelectorAll("li:not(.ignore) a").length).toBe(5)
     })
   })
 
@@ -188,17 +188,17 @@ describe('Paginate', () => {
       const firstButton = vm.$el.querySelector("li:first-child a")
       const lastButton = vm.$el.querySelector("li:last-child a")
       const activeItem = vm.$el.querySelector(".active a")
-      expect(firstButton.textContent).to.equal("First")
-      expect(lastButton.textContent).to.equal("Last")
-      expect(activeItem.textContent).to.equal("2")
+      expect(firstButton.textContent).toBe("First")
+      expect(lastButton.textContent).toBe("Last")
+      expect(activeItem.textContent).toBe("2")
 
       firstButton.click()
       Vue.nextTick(() => {
-        expect(activeItem.textContent).to.equal("1")
+        expect(activeItem.textContent).toBe("1")
 
         lastButton.click()
         Vue.nextTick(() => {
-          expect(activeItem.textContent).to.equal("10")
+          expect(activeItem.textContent).toBe("10")
         })
       })
     })
@@ -215,17 +215,17 @@ describe('Paginate', () => {
       const firstButton = vm.$el.querySelector("a:first-child")
       const lastButton = vm.$el.querySelector("a:last-child")
       const activeItem = vm.$el.querySelector("a.active")
-      expect(firstButton.textContent).to.equal("First")
-      expect(lastButton.textContent).to.equal("Last")
-      expect(activeItem.textContent).to.equal("2")
+      expect(firstButton.textContent).toBe("First")
+      expect(lastButton.textContent).toBe("Last")
+      expect(activeItem.textContent).toBe("2")
 
       // firstButton.click()
       // Vue.nextTick(() => {
-      //   expect(activeItem.textContent).to.equal("1")
+      //   expect(activeItem.textContent).toBe("1")
       //
       //   lastButton.click()
       //   Vue.nextTick(() => {
-      //     expect(activeItem.textContent).to.equal("10")
+      //     expect(activeItem.textContent).toBe("10")
       //   })
       // })
     })
@@ -242,7 +242,7 @@ describe('Paginate', () => {
       }).$mount()
 
       const firstButton = vm.$el.querySelector("li:first-child a")
-      expect(firstButton.textContent).to.equal("1")
+      expect(firstButton.textContent).toBe("1")
     })
 
     it('hide next button when there is no next page', () => {
@@ -255,7 +255,7 @@ describe('Paginate', () => {
       }).$mount()
 
       const lastButton = vm.$el.querySelector("li:last-child a")
-      expect(lastButton.textContent).to.equal("10")
+      expect(lastButton.textContent).toBe("10")
     })
 
     it('hide next and prev button when only one page', () => {
@@ -268,8 +268,8 @@ describe('Paginate', () => {
 
       const firstButton = vm.$el.querySelector("li:first-child a")
       const lastButton = vm.$el.querySelector("li:last-child a")
-      expect(firstButton.textContent).to.equal("1")
-      expect(lastButton.textContent).to.equal("1")
+      expect(firstButton.textContent).toBe("1")
+      expect(lastButton.textContent).toBe("1")
     })
   })
   
@@ -288,9 +288,9 @@ describe('Paginate', () => {
     const prevButton = vm.$el.querySelector('.prev-item')
     const nextButton = vm.$el.querySelector('.next-item')
     const breakView = vm.$el.querySelector('.break-view')
-    expect(prevButton.textContent).to.equal('PREVIOUS TEXT')
-    expect(nextButton.textContent).to.equal('NEXT TEXT')
-    expect(breakView.textContent).to.equal('BREAK VIEW TEXT')
+    expect(prevButton.textContent).toBe('PREVIOUS TEXT')
+    expect(nextButton.textContent).toBe('NEXT TEXT')
+    expect(breakView.textContent).toBe('BREAK VIEW TEXT')
   })
 
 })
